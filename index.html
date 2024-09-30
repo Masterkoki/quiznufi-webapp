@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Má'zhínǔ Nufī</title>
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome Kit Script -->
+    <script src="https://kit.fontawesome.com/74fb0e9d79.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="quiz-container">
+        <!-- Authentication Screen -->
+        <div class="auth-container" id="auth-container">
+            <!-- Login Form -->
+            <div class="auth-form" id="login-form">
+                <h2>Má'zhínǔ Nufī</h2>
+                <br>
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+                <br><br>
+                <button id="login-btn" type="button" class="fancy-button">Cōndʉ̄ɑ̄ (Login)</button>
+                
+                
+                <br><br>
+                <p>Ŋwɑ̌' zēn zǒ: <a href="#" id="show-signup">Sign up here</a></p>
+            </div>
+
+           <!-- Signup Form -->
+            <div class="auth-form" id="signup-form" style="display: none;">
+                <h2>Sign Up</h2>
+                
+                <!-- Username Field -->
+                <label for="signup-username">Zénjɑ̀' (username):</label>                
+                <input type="text" id="signup-username" required>
+                <br>
+                <!-- Email Field -->
+                <label for="signup-email">Mbù' khʉ̀khʉ̀ɑ̄nkèn (Email):</label>
+                <input type="email" id="signup-email" required>
+                <br>
+                <!-- Password Field -->
+                <label for="signup-password">Kòh (Password):</label>
+                <input type="password" id="signup-password" required>
+                <br>
+                <!-- Sign Up Button -->
+                <button id="signup-btn" type="button">Sign Up</button>
+                <br>
+                <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+            </div>
+
+  
+            <!-- Continue as Guest Option -->
+            <div class="guest-option" id="guest-option">
+                <p>Or</p>
+                <button id="continue-guest-btn" class="start-btn">Continue as Guest</button>
+            </div>
+        </div>
+
+        <!-- Main Quiz Content -->
+        <header style="display: none;">
+            <h1>Má'zhínǔ Nufī</h1>
+            <div class="score-timer">
+                <div class="score">Mvǎkpii: <span id="score">0</span></div>
+                <div class="timer">Mvǎkntie': <span id="time">...</span></div>
+            </div>
+            <!-- Progress Bar Container -->
+            <div class="progress-container">
+                <span id="question-progress-text">0/0</span> <!-- Current question display -->
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </header>
+        <main>
+            <!-- Start Screen -->
+            <div class="start-screen" id="start-screen" style="display: none;">
+                <!-- Logo -->
+                <img src="resources/resulam_logo_egg.png" alt="Resulam Logo" class="logo">
+
+                <!-- Author Description -->
+                <div class="author-description">
+                    <p>
+                        This quiz was created by Shck Tchamna and Tanko Nono Jason for Resulam. Please support its development.
+                    </p>
+                </div>
+
+                <!-- Dictionary Promotion -->
+                <div class="dictionary-promotion">
+                    <p>
+                        To learn Nufi languages seriously, get this dictionary:
+                        <a href="https://play.google.com/store/apps/details?id=com.resulam.android.NufiTchamna_nufi_francais_nufi&hl=en_US&pli=1" target="_blank" rel="noopener noreferrer">
+                            <br>Download on Google Play Store
+                        </a>.
+                    </p>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="social-media">
+                    <a href="https://www.youtube.com/resulam" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.facebook.com/resulam" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+
+                <!-- Number of Questions Input -->
+                <div class="question-count-container">
+                    <label for="question-count"><b>Mvǎk nte'sínu</b> (Number of Questions):</label>
+                    <input type="number" id="question-count" min="1" placeholder="e.g., 5">
+                </div>
+
+                <!-- Difficulty Level Dropdown -->
+                <div class="difficulty-container">
+                    <label for="difficulty-level"><b> Ndhʉ̌ Làksì (Level):</b></label>
+                    <select id="difficulty-level">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Quiz Area Dropdown -->
+                <div class="quiz-area-container">
+                    <label for="quiz-area"><b>Ntīē Làksì (Area):</b></label>
+                    <select id="quiz-area">
+                        <!-- <option value="general">General</option> -->
+                        <option value="Yahlēh">Yahlēh</option>
+                        <option value="Tǎ'yō">Tǎ'yō</option>
+                    </select>
+                </div>
+
+
+                <!-- Start Quiz Button -->
+                <button id="start-btn" class="start-btn">Ghěnmbhi</button>
+            </div>
+            <!-- Question and Options -->
+            <div class="question-container" id="question-container" style="display: none;">
+                <h2 id="question">Te'sínǔ imbɑ̄ sée le</h2>
+            </div>
+            <div class="options-container" id="options-container" style="display: none;">
+                <!-- Option buttons will be generated here -->
+            </div>
+        </main>
+        <footer>
+            <button class="next-btn" id="next-btn" disabled style="display: none;">Ghěnmbhi</button>
+            <!-- Sign Out Button -->
+            <button id="signout-btn" class="signout-btn" style="display: none;">Sign Out</button>
+        </footer>
+    </div>
+
+    <!-- Include the bundled JavaScript file -->
+    <script src="dist/bundle.js"></script>
+
+</body>
+</html>
